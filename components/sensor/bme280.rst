@@ -26,11 +26,13 @@ required to be set up in your configuration for this sensor to work.
       - platform: bme280
         temperature:
           name: "BME280 Temperature"
-          oversampling: 16x
+          oversampling: 1x
         pressure:
           name: "BME280 Pressure"
+          oversampling: 1x
         humidity:
           name: "BME280 Humidity"
+          oversampling: 1x
         address: 0x77
         update_interval: 60s
 
@@ -84,6 +86,11 @@ configure this amount. Possible oversampling values:
 -  ``4x``
 -  ``8x``
 -  ``16x`` (default)
+
+.. warning::
+
+    Usage of oversampling higher then 1x, IIR filters or a higher update interval then 60s will cause the sensor
+    to heat up and show inaccurate temperature readings. See *Weather monitoring* in the data sheet.
 
 See Also
 --------
